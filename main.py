@@ -1,8 +1,20 @@
-a = 18000000000
-b = 8412545425
-if a > b:
-    print("Winner is Donald Trump")
-elif b<a:
-    print("Winner is Joey Biden")
-else:
-    print("Winner is Joey Biden")
+def checkio(data):
+    base = "I" * data
+
+    base = base.replace("I" * 5, "V")
+    base = base.replace("V" * 2, "X")
+    base = base.replace("X" * 5, "L")
+    base = base.replace("L" * 2, "C")
+    base = base.replace("C" * 5, "D")
+    base = base.replace("D" * 2, "M")
+
+    base = base.replace("DCCCC", "CM")
+    base = base.replace("CCCC", "CD")
+    base = base.replace("LXXXX", "XC")
+    base = base.replace("XXXX", "XL")
+    base = base.replace("VIIII", "IX")
+    base = base.replace("IIII", "IV")
+
+    return base
+
+print(checkio(25))

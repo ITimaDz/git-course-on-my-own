@@ -1,37 +1,19 @@
-rule_add = {
-    'I': 1,
-    'V': 5,
-    'X': 10,
-    'L': 50,
-    'C': 100,
-    'D': 500,
-    'M': 1000,
-}
-
-rule_div = {
-    ('I', 'V'): 3,
-    ('I', 'X'): 8,
-    ('X', 'L'): 30,
-    ('X', 'C'): 80,
-    ('C', 'D'): 300,
-    ('C', 'M'): 800,
-}
+s = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+length = {('I', 'V'): 3, ('I', 'X'): 8, ('X', 'L'): 30, ('X', 'C'): 80, ('C', 'D'): 300, ('C', 'M'): 800}
 
 def roman_to_arabic(roman_number):
-    number = 0
+    num = 0
     prev_literal = None
     for literal in roman_number:
-        if prev_literal and rule_add[prev_literal] < rule_add[literal]:
-            number += rule_div[(prev_literal, literal)]
+        if prev_literal and s[prev_literal] < s[literal]:
+            num += length[(prev_literal, literal)]
         else:
-            number += rule_add[literal]
+            num += s[literal]
         prev_literal = literal
-    return number
+    return num
 
-import unittest
-
-class RomanNumTest(unittest.TestCase):
-    def test_roman_num(self):
+class Solution:
+    def romanToInt(self):
         self.assertEquals(roman_to_arabic('I'), 1)
         self.assertEquals(roman_to_arabic('II'), 2)
         self.assertEquals(roman_to_arabic('III'), 3)
